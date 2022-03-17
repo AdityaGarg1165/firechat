@@ -60,7 +60,7 @@ export default function ChatHome() {
           <button onClick={click} className={styles.create}>Create new group firechat 🔥</button>
       <div className={styles.container}>
         {message && message.map((message)=>(
-          <form action="" onSubmit={(e)=>{
+          <form action="" key={message.id} onSubmit={(e)=>{
             e.preventDefault();
               const val = e.target.inp2.value
               const coll = collection(db,message.name + "-" + "invites")
@@ -69,7 +69,7 @@ export default function ChatHome() {
               })
               
             }}>
-              <div className={styles.c2}>
+              <div className={styles.c2} key={message.id}>
               <div key={message.id} className={styles.gncont}>
             <p className={styles.message}>{message.name}</p>
             <input name='inp2' ref={test} className={styles.invinp} type="text" placeholder='username of the person' />
@@ -78,7 +78,7 @@ export default function ChatHome() {
               </div>
             </form>
         ))}
-        <div className="view" id='view'></div>
+        <div className="view" key={message.id} id='view'></div>
       </div>
     </div>
   )
