@@ -5,6 +5,8 @@ import { collection,getFirestore,limit,orderBy,query } from 'firebase/firestore'
 import { getAuth} from 'firebase/auth'
 import {useCollectionData} from 'react-firebase-hooks/firestore'
 import {useAuthState} from 'react-firebase-hooks/auth'
+import {useRef} from 'react'
+import { useEffect } from 'react'
 export default function Home() {
   const db = getFirestore(app)
   const auth = getAuth(app)
@@ -12,6 +14,11 @@ export default function Home() {
   const firecoll = collection(db,"coll1")
   //@ts-ignore
   const sorted = firecoll
+  const view = useRef()
+
+  useEffect(()=>{
+    view.current.scrollIntoView({behavior:"smooth"})
+  })
   // @ts-ignore
   const [message] = useCollectionData(sorted,{idFeild:'id'})
   const name = cookie.get("name")
@@ -26,6 +33,7 @@ export default function Home() {
           <p className={styles.name}>from @{message.name}</p>
         </div>
       ))}
+      <div ref={view} className="view"></div>
     </div>
   )
 }

@@ -7,13 +7,40 @@
   margin-top: 12px;
   border: 1px solid lightgray;
 }
+.container{
+  margin-top: 18vh;
+  margin-left: -7vh;
+}
+.c2{
+  margin-top: 6vh;
+  margin-left: -4vh;
+  position: absolute;
+}
+.invite{
+  width: 19vh;
+  position: absolute;
+  border: 0;
+  height: 6vh;
+  background-color: rgb(0, 0, 0);
+  margin-left: 50.5vh;
+  margin-top: 5.5vh;
+  color: white;
+  cursor: pointer
+
+}
+.invinp{
+  margin-left: 50.5vh;
+  margin-top: -1vh;
+  height: 5vh;
+  position: absolute;
+}
 .gncont{
   width:40vh;
   border-radius: 4.5px;
   height: 12vh;
   background-color: white;
   margin-left: 79vh;
-  margin-top: 322px;
+  margin-top: 22px;
   border: 1px solid lightgray;
 }
 .msgb{
@@ -37,14 +64,27 @@
   color: white;
   cursor: pointer;
 }
+.err{
+  color: red;
+  position: absolute;
+  margin-left: 72vh;
+  margin-top: -15vh;
+}
+.newinp{
+  margin-left: 72vh;
+  margin-top: -12vh;
+  width: 32vh;
+  height: 4vh;
+  position: absolute;
+}
 .create{
   width: 22vh;
   position: absolute;
   border: 0;
   height: 6vh;
   background-color: rgb(0, 0, 0);
-  margin-left: 65.5vh;
-  margin-top: 5.5vh;
+  margin-left: 76.5vh;
+  margin-top: -6.5vh;
   color: white;
   cursor: pointer;
 }

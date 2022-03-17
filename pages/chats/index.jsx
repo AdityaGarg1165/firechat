@@ -28,8 +28,9 @@ export default function ChatHome() {
   if(collectiondata!= undefined){
     collectiondata.map((item)=>{
       if(item.val === "true"){
+        console.log(input1.current.value)
         collectiondata = undefined
-        error = "name already taken!"
+        error = "name already taken! or the field is empty"
       }
     })
   }
@@ -48,20 +49,37 @@ export default function ChatHome() {
       input1.current.value = ""
     }
   }
-  
+  const test = useRef()
  
 
 
   return (
-    <div className={styles.container}>
-        <p>{error}</p>
-        <input type="text" onChange={(e)=>{setValue(e.target.value)}} className={styles.newinp} ref={input1} name='inp' placeholder='name of new chat...' />
-        <button onClick={click} className={styles.create}>Create new group firechat 🔥</button>
-      {message && message.map((message)=>(
-        <div key={message.id} className={styles.gncont}>
-          <p className={styles.message}>{message.name}</p>
-        </div>
-      ))}
+    <div>
+          <p className={styles.err}>{error}</p>
+          <input type="text" onChange={(e)=>{setValue(e.target.value)}} className={styles.newinp} ref={input1} name='inp' placeholder='name of new chat...' />
+          <button onClick={click} className={styles.create}>Create new group firechat 🔥</button>
+      <div className={styles.container}>
+        {message && message.map((message)=>(
+          <form action="" onSubmit={(e)=>{
+            e.preventDefault();
+              const val = e.target.inp2.value
+              const coll = collection(db,message.name + "-" + "invites")
+              addDoc(coll,{
+                name:val
+              })
+              
+            }}>
+              <div className={styles.c2}>
+              <div key={message.id} className={styles.gncont}>
+            <p className={styles.message}>{message.name}</p>
+            <input name='inp2' ref={test} className={styles.invinp} type="text" placeholder='username of the person' />
+            <button className={styles.invite}>invite</button>
+              </div>
+              </div>
+            </form>
+        ))}
+        <div className="view" id='view'></div>
+      </div>
     </div>
   )
 }
