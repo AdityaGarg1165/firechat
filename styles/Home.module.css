@@ -157,6 +157,21 @@
   cursor: pointer;
   font-size: large;
 }
+.fzf{
+  font-size: 22vh;
+  margin-left: 72vh;
+}
+.gnf{
+  font-size: 7vh;
+  margin-left: 64vh;
+  color: #7D7D7D;
+}
+.ninvted{
+  font-size: 7vh;
+  margin-left: 32vh;
+  margin-top: 12vh;
+  color: #7D7D7D;
+}
 .ilink{
   margin-left: 66vh;
   width: 71vh;

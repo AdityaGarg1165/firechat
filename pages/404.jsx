@@ -7,7 +7,7 @@ export default function Invalid() {
         404
       </h1>
       <h2 className={styles.gnf}>
-        Group not found
+        The requested page is not found
       </h2>
     </div>
   )
