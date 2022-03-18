@@ -36,8 +36,10 @@ export default function Home() {
 
   return (
     <div className={styles.container}>
+      <div className={styles.icont}>
       <input value={inpval} type="text" onChange={(e)=>{setval(e.target.value)}} className={styles.minp} />
       <button onClick={add} className={styles.mbtn}>Submit</button>
+      </div>
       {message && message.map((message)=>(
         <div className={styles.messagecontainer} key={message.id}>
           <p className={styles.message}>{message.message}</p>
