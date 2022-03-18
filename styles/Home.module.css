@@ -774,7 +774,9 @@
     margin-top: 63vh;
     margin-left: 6vh;
   }
-
+  .minp{
+    height: 4vh;
+  }
 }
 .mbtn{
   margin-top: 62.9vh;
