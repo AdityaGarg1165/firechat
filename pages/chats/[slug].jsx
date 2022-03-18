@@ -1,7 +1,7 @@
 import styles from '../../styles/Home.module.css'
 import {app} from '../firebase/firebase'
 import cookie from 'js-cookie'
-import { addDoc, collection,getFirestore,limit,orderBy,query } from 'firebase/firestore'
+import { addDoc,Timestamp, collection,getFirestore,limit,orderBy,query } from 'firebase/firestore'
 import { getAuth} from 'firebase/auth'
 import {useCollectionData} from 'react-firebase-hooks/firestore'
 import {useAuthState} from 'react-firebase-hooks/auth'
@@ -18,7 +18,7 @@ export default function Chat() {
   if (router.isReady){
   //@ts-ignore
     coll = collection(db,slug)
-    jcoll = collection(db,slug + "-"+"users")
+    jcoll = collection(db,slug + "-"+"invites")
   }
   // @ts-ignore
   const [message] = useCollectionData(coll,{idFeild:'id'})
@@ -26,10 +26,9 @@ export default function Chat() {
   const  input = useRef()
   const add = () => {
     const newmessage = addDoc(coll,{
-      //@ts-ignore  
       "message":input.current.value,
-      //@ts-ignore
       "name":name,
+      "createdAt":Timestamp.now().seconds 
     })
 
   }
@@ -39,23 +38,24 @@ export default function Chat() {
     value2.map((item)=>{
       arr.push(item.name)
       if(arr.includes(name)){
-        
       }
       else{
-        Router.push("/invalid-group")
+        Router.push("/not-invited")
       }
     })
   }
   const [value] = useCollectionData(coll)
+  let valearr = []
   if(value != undefined){
     value.map((item)=>{
-      if(item.val === "true"){
-        
-      }
-      else{
-        Router.push("/invalid-group")
-      }
+      valearr.push(item.val)
     })
+    if(valearr.includes("true")){
+      // console.log(coll.orderBy(""))
+    }
+    else{
+      Router.push("/invalid-group")
+    }
   }
 
 

@@ -35,7 +35,7 @@ function Navbar() {
     
     
   }}
-  const routetowr = () => {router.push("/write")}
+  const routetowr = () => {router.push("/chats")}
   const routehm = () => {router.push("/")}
   useEffect(()=>{
     if(name === undefined){
@@ -52,7 +52,7 @@ function Navbar() {
         <nav className={styles.nav}>
             <ul className={styles.ul}>
                 <button className={styles.li} id={styles.home} onClick={routehm}>FIRECHAT</button>
-                <button className={styles.li} id={styles.mb} onClick={routetowr}>Write a message</button>
+                <button className={styles.li} id={styles.mb} onClick={routetowr}>Your chats</button>
                 <button className={styles.li} id={styles.soi} onClick={route}>{state}</button>
                 <img className={styles.photo} src={photoURL} alt="" />
             </ul>

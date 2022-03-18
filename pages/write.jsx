@@ -15,7 +15,7 @@ function Write() {
   
   const db = getFirestore(app)
   const [inpval,setval] = useState(null)
-  const docref = collection(db,"coll1")
+  const docref = collection(db,"mmsgs")
   const add = () => {
     const docsd = addDoc(docref,{
       message:inpval,

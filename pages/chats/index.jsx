@@ -7,10 +7,13 @@ import {useCollectionData} from 'react-firebase-hooks/firestore'
 import {useAuthState} from 'react-firebase-hooks/auth'
 import {useRef,useState} from 'react'
 import { useEffect } from 'react'
+import Link from 'next/link'
+import Router from 'next/router'
 export default function ChatHome() {
   const db = getFirestore(app)
   const auth = getAuth(app)
   const [value,setValue] = useState("test")
+  const [nv,snv] = useState('')
   let error = ""
   const authstate = useAuthState(auth)
   const name = cookie.get("name")
@@ -34,7 +37,7 @@ export default function ChatHome() {
       }
     })
   }
-  const click = ()=>{
+  const click = async()=>{
     if(error === "name already taken!"){
 
     }
@@ -43,8 +46,14 @@ export default function ChatHome() {
         "name":value
       })
       const newcoll = collection(db,value)
-      addDoc(newcoll,{
-        val:"true"
+      const invcoll = collection(db,value + "-" + "invites")
+      await addDoc(newcoll,{
+        val:"true",
+        message:"welcome to a new firechat 🔥",
+        name:"firechat team"
+      })
+      addDoc(invcoll,{
+        name:name
       })
       input1.current.value = ""
     }
@@ -59,8 +68,8 @@ export default function ChatHome() {
           <input type="text" onChange={(e)=>{setValue(e.target.value)}} className={styles.newinp} ref={input1} name='inp' placeholder='name of new chat...' />
           <button onClick={click} className={styles.create}>Create new group firechat 🔥</button>
       <div className={styles.container}>
-        {message && message.map((message)=>(
-          <form action="" key={message.id} onSubmit={(e)=>{
+        {message && message.map((item)=>(
+          <form action="" key={item.id} onSubmit={(e)=>{
             e.preventDefault();
               const val = e.target.inp2.value
               const coll = collection(db,message.name + "-" + "invites")
@@ -69,16 +78,17 @@ export default function ChatHome() {
               })
               
             }}>
-              <div className={styles.c2} key={message.id}>
-              <div key={message.id} className={styles.gncont}>
-            <p className={styles.message}>{message.name}</p>
-            <input name='inp2' ref={test} className={styles.invinp} type="text" placeholder='username of the person' />
-            <button className={styles.invite}>invite</button>
+              <div key={item.id} className={styles.gncont} onClick={()=>{Router.push("chats/" + item.name)}}>
+            <p className={styles.message}>{item.name}</p>
               </div>
+              <div className={styles.invcont}>
+            <button className={styles.invite} onClick={(e)=>{
+                test.current.value = "https://firechat-gray.vercel.app/chats/invite/" + item.name
+            }}>invite</button>
+            <input name='inp2' ref={test} className={styles.invinp} type="text" placeholder='username of the person' />
               </div>
             </form>
         ))}
-        <div className="view" key={message.id} id='view'></div>
       </div>
     </div>
   )

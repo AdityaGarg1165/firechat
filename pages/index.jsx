@@ -1,20 +1,30 @@
 import styles from '../styles/Home.module.css'
 import {app} from './firebase/firebase'
 import cookie from 'js-cookie'
-import { collection,getFirestore,limit,orderBy,query } from 'firebase/firestore'
+import { collection,addDoc,getFirestore,limit,orderBy,query, Timestamp } from 'firebase/firestore'
 import { getAuth} from 'firebase/auth'
 import {useCollectionData} from 'react-firebase-hooks/firestore'
 import {useAuthState} from 'react-firebase-hooks/auth'
 import {useRef} from 'react'
-import { useEffect } from 'react'
+import { useEffect,useState } from 'react'
 export default function Home() {
   const db = getFirestore(app)
   const auth = getAuth(app)
   const authstate = useAuthState(auth)
-  const firecoll = collection(db,"coll1")
+  const firecoll = collection(db,"mmsgs")
   //@ts-ignore
   const sorted = firecoll
   const view = useRef()
+  const [inpval,setval] = useState(null)
+  const docref = collection(db,"mmsgs")
+  const add = () => {
+    const docsd = addDoc(firecoll,{
+      message:inpval,
+      name:cookie.get("name"),
+      createdAt:Timestamp.now().seconds
+    })
+    setval("")
+}
 
   useEffect(()=>{
     view.current.scrollIntoView({behavior:"smooth"})
@@ -26,6 +36,8 @@ export default function Home() {
 
   return (
     <div className={styles.container}>
+      <input value={inpval} type="text" onChange={(e)=>{setval(e.target.value)}} className={styles.minp} />
+      <button onClick={add} className={styles.mbtn}>Submit</button>
       {message && message.map((message)=>(
         <div className={styles.messagecontainer} key={message.id}>
           <p className={styles.message}>{message.message}</p>
