@@ -18,10 +18,10 @@
 }
 .minp{
   border: 0;
-  width: 90%;
-  margin-left: 7.1vh;
-  margin-top: 35.4%;
-  position: fixed;
+  width: 100%;
+  margin-left:7vh;;
+  margin-top: 25.4%;
+  position: absolute;
   z-index: 9999;
   height: 5.8vh;
 }
@@ -148,6 +148,7 @@
 .nav{
   height: 8vh;
   background: white;
+  width: 100%;
 }
 .gb{
   width:40vh;
@@ -253,17 +254,45 @@
 #mb{
   font-size: medium;
   width: 22vh;
-} 
-@media screen and (max-width: 1000px)
+}
+@media screen and (max-width: 1412px)
 {
+  #soi{
+    margin-left: 2vh;
+    width: 12vh;
+    font-size: small;
+
+  }
+
+  .nav{
+    width: auto;
+  }
+  .minp{
+    margin-top:62.8vh;
+  }
   #mb{
-    margin-left:2vh;
-    border: 0px;
-    width: 18vh;
-    height: 5vh;
-    border-radius: 4px;
-    background: #3542C9;
-    color: white;
+    margin-left: 1vh;
+    width: 12vh;
+    font-size: small;
+  }
+  #home{
+    margin-left: 1vh;
+  }
+  .messagecontainer{
+    width: 80vh;
+  }
+  .message{
+    font-size: small;
+  }
+
+} 
+@media screen and (max-width: 1459px)
+{
+  .mbtn{
+    margin-top: -12vh;
+  }
+  .nav{
+    width: 100%;
   }
 }
 @media screen and (max-width: 1189px)
@@ -278,9 +307,7 @@
     background: #3542C9;
     color: white;
   }
-  .mbtn{
-    margin-top: 12vh;
-  }
+  
 }
 @media screen and (max-width: 1199px)
 {
@@ -580,7 +607,7 @@
   .message{
     font-size: small;
   }
-
+  
 }
 @media screen and (max-width: 642px)
 {
@@ -636,39 +663,14 @@
     font-size: small;
     margin-left: 15vh;
   }
-  .mbtn{
-    height: 5vh;
-    width: 12vh;
-    margin-top: 63vh;
-  }
-  .message{
-    font-size: small;
-  }
 
-}
-@media screen and (max-width: 1462px)
-{
-  #soi{
-    margin-left: 2vh;
-    width: 12vh;
-    font-size: small;
-
-  }
-  #mb{
-    margin-left: 1vh;
-    width: 12vh;
-    font-size: small;
-  }
-  #home{
-    margin-left: 1vh;
-  }
-  .messagecontainer{
-    width: 80vh;
+  .minp{
+    width: 110vh;
   }
   .mbtn{
     height: 5vh;
     width: 12vh;
-    margin-top: 63vh;
+    margin-top: 53vh;
   }
   .message{
     font-size: small;
