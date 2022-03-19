@@ -7,6 +7,7 @@ import {useCollectionData} from 'react-firebase-hooks/firestore'
 import {useAuthState} from 'react-firebase-hooks/auth'
 import {useRef} from 'react'
 import { useEffect,useState } from 'react'
+import Router from 'next/router'
 export default function Home() {
   const db = getFirestore(app)
   const auth = getAuth(app)
@@ -18,11 +19,16 @@ export default function Home() {
   const [inpval,setval] = useState(null)
   const docref = collection(db,"mmsgs")
   const add = () => {
-    const docsd = addDoc(firecoll,{
-      message:inpval,
-      name:cookie.get("name"),
-      createdAt:Timestamp.now().seconds
-    })
+    if(name != undefined){
+      const docsd = addDoc(docref,{
+        message:inpval,
+        name:cookie.get("name"),
+        createdAt:Timestamp.now().seconds
+      })
+    }
+    else{
+      Router.push("/auth")
+    }
     setval("")
 }
 
