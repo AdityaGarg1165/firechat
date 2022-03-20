@@ -17,7 +17,13 @@ export default function Home() {
   const sorted = firecoll
   const view = useRef()
   const [inpval,setval] = useState(null)
+  const name = cookie.get("name")
   const docref = collection(db,"mmsgs")
+  if(name != undefined){
+  }
+  else{
+    Router.push("/auth")
+  }
   const add = () => {
     if(name != undefined){
       const docsd = addDoc(docref,{
@@ -27,11 +33,6 @@ export default function Home() {
       })
     }
     else{
-      if(name != undefined){
-      }
-      else{
-        Router.push("/auth")
-      }
     }
     setval("")
 }
@@ -41,7 +42,6 @@ export default function Home() {
   })
   // @ts-ignore
   const [message] = useCollectionData(sorted,{idFeild:'id'})
-  const name = cookie.get("name")
 
   useEffect(()=>{
     Router.push("/auth")
