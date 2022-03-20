@@ -10,6 +10,7 @@ import { addDoc, collection, doc, getFirestore, setDoc } from 'firebase/firestor
 
 function Auth() {
   const auth = getAuth(app)
+  const name = cookie.get('name')
   const authstate = useAuthState(auth)
   const db = getFirestore(app)
   const googlesin = () => {
@@ -26,6 +27,14 @@ function Auth() {
       
     })
   }
+  useEffect(()=>{
+    if(name === undefined){
+
+    }
+    else{
+      Router.push("/")
+    }
+  })
   return (
     <div>
         <div className={styles.goog}>
