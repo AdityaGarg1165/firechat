@@ -19,11 +19,14 @@ export default function Home() {
   const [inpval,setval] = useState(null)
   const name = cookie.get("name")
   const docref = collection(db,"mmsgs")
-  if(name != undefined){
-  }
-  else{
-    Router.push("/auth")
-  }
+  useEffect(()=>{
+    if(name != undefined){
+    }
+    else{
+      Router.push("/auth")
+    }
+
+  })
   const add = () => {
     if(name != undefined){
       const docsd = addDoc(docref,{
