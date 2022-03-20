@@ -28,9 +28,9 @@ export default function Home() {
     }
     else{
       if(name != undefined){
-        Router.push("/auth")
       }
       else{
+        Router.push("/auth")
       }
     }
     setval("")
