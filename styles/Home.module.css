@@ -148,7 +148,6 @@
 .nav{
   height: 8vh;
   background: white;
-  width: 100%;
 }
 .gb{
   width:40vh;
@@ -263,7 +262,10 @@
     font-size: small;
 
   }
-
+  .mbtn{
+    position: absolute;
+    margin-top: 12vh;
+  }
   .nav{
     width: auto;
   }
@@ -286,13 +288,10 @@
   }
 
 } 
-@media screen and (max-width: 1459px)
+@media screen and (max-width: 1449px)
 {
   .mbtn{
-    margin-top: -12vh;
-  }
-  .nav{
-    width: 100%;
+    margin-top: 12vh;
   }
 }
 @media screen and (max-width: 1189px)
@@ -307,7 +306,9 @@
     background: #3542C9;
     color: white;
   }
-  
+  .mbtn{
+    margin-top: 12vh;
+  }
 }
 @media screen and (max-width: 1199px)
 {

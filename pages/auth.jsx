@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import {FcGoogle} from 'react-icons/fc'
 import styles from '../styles/Home.module.css'
-import {getAuth, GoogleAuthProvider, signInWithCredential, signInWithPopup} from 'firebase/auth'
+import {getAuth, GoogleAuthProvider,signInAnonymously, signInWithCredential, signInWithPopup} from 'firebase/auth'
 import {useAuthState} from 'react-firebase-hooks/auth'
 import cookie from 'js-cookie'
 import {app} from './firebase/firebase'

@@ -39,6 +39,10 @@ export default function Home() {
   const [message] = useCollectionData(sorted,{idFeild:'id'})
   const name = cookie.get("name")
 
+  useEffect(()=>{
+    Router.push("/auth")
+  })
+
 
   return (
     <div className={styles.container}>
