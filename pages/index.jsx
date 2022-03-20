@@ -43,11 +43,6 @@ export default function Home() {
   // @ts-ignore
   const [message] = useCollectionData(sorted,{idFeild:'id'})
 
-  useEffect(()=>{
-    Router.push("/auth")
-  })
-
-
   return (
     <div className={styles.container}>
       {message && message.map((message)=>(
