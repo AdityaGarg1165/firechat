@@ -1,16 +1,16 @@
 import { initializeApp } from "firebase/app";
 
+
 const firebaseConfig = {
-  apiKey: "AIzaSyCajBTkZKcPrbXzmla4Nip3rSEV2kuWBc8",
-  authDomain: "chat-f7396.firebaseapp.com",
-  projectId: "chat-f7396",
-  storageBucket: "chat-f7396.appspot.com",
-  messagingSenderId: "151570516700",
-  appId: "1:151570516700:web:1a8b8c793d87ad9f918219",
-  measurementId: "G-4NWD194SX0"
+  apiKey: "AIzaSyAjcSURYnbrbFMUUEXf2-NcfWjlb2phUno",
+  authDomain: "adityafirechat.firebaseapp.com",
+  projectId: "adityafirechat",
+  storageBucket: "adityafirechat.appspot.com",
+  messagingSenderId: "87674050829",
+  appId: "1:87674050829:web:283f375259ed92f17ab844",
+  measurementId: "G-S4C6RX61WY"
 };
 
-import React from 'react'
 
 function Firebase() {
   return (
